@@ -158,12 +158,7 @@ namespace :estimate do
 
     request.body = JSON.dump(cvs_base_query(ndc, zip_code, date))
     response = https.request(request)
-    if response.kind_of? Net::HTTPSuccess 
-      puts("[success]") 
-    else
-      puts '[error]'
-      raise StandardError.new("Failed")
-    end
+    raise StandardError.new("Failed") unless response.kind_of? Net::HTTPSuccess 
     response.read_body
   end
 
@@ -174,9 +169,10 @@ namespace :estimate do
       data[:ndcInfo].each do |ndc_info|
         ndc = ndc_info[:ndc] 
         print("Fetching CVS locations for #{zip_code} on #{date.to_s}")
-        cached(["cvs", "locations", zip_code, date.to_s, ndc], data_type: :cvs_locations) do
+        result, successful = cached(["cvs", "locations", zip_code, date.to_s, ndc], data_type: :cvs_locations) do
           JSON.parse(cvs_query(ndc, zip_code, date))
         end
+        puts("[#{successful ? "success" : "error"}]")
       end
     end
   end
@@ -201,8 +197,9 @@ namespace :estimate do
       cache.save!
     end
     sleep(0.5) unless cache_hit
-    result
+    [result, true]
   rescue StandardError => e
+    [nil, false]
   end
 
   def zip_codes
@@ -252,8 +249,8 @@ namespace :estimate do
           "dob": "1993-12-03"
         }
       }
-      cached(["walgreens", "locations", zip_code, date], data_type: :walgreens_locations) do
-        print("Fetching walgreens locations for #{zip_code} on #{date}")
+      print("Fetching walgreens locations for #{zip_code} on #{date}")
+      result, successful = cached(["walgreens", "locations", zip_code, date], data_type: :walgreens_locations) do
         response = HTTParty.post(
           "https://www.walgreens.com/hcschedulersvc/svc/v8/immunizationLocations/timeslots",
           body: body.to_json,
@@ -264,13 +261,13 @@ namespace :estimate do
             "Content-Type": 'application/json',
           },
         )
-        if response.success?
-          puts("[success]")
-          JSON.parse(response.body)
-        else
-          puts("[error]")
-          raise StandardError.new("Failed")
-        end
+        raise StandardError.new(response.text) unless response.success?
+        JSON.parse(response.body)
+      end
+      if successful
+        puts("[success]")
+      else
+        puts("[error]")
       end
     end
   end
