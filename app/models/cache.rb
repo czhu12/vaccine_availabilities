@@ -3,5 +3,6 @@ class Cache < ApplicationRecord
     locations: 0,
     availabilities: 1,
     search: 2,
+    walgreens_locations: 3,
   }
 end
