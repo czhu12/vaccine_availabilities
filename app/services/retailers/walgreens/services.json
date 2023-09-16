@@ -1,0 +1,930 @@
+[
+    {
+        "productId": "5fd1ab9f5fa47e056c076ff2",
+        "drugId": "695077",
+        "manufacturer": "Pfizer-BioNtech",
+        "manufacturerDisplayName": "Pfizer-BioNtech",
+        "ndc": "59267-1000-01",
+        "vaccineName": "COVID-19",
+        "vaccineCode": "207",
+        "category": "Adult",
+        "boosterEnabled": true,
+        "drugName": "COVID19 (PFIZER AGE 12+) PURPLE CAP",
+        "rules": {
+            "series": [
+                {
+                    "daysIn": 0,
+                    "daysOut": 14,
+                    "dose": 1,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.3,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 1",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 56,
+                    "daysOut": 35,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.3,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 2",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Regular",
+                    "daysIn": 28,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 3,
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.3,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Additional Dose",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 1,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.3,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-09-07",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.3,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-09-07",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "dvar": {
+            "attributeDetails": {
+                "mandatoryAttr": [
+                    "diluentLot",
+                    "diluentExpiry"
+                ]
+            },
+            "ICPlusStatus": "inactive",
+            "visPublishDate": "8/31/2022",
+            "drugDisplayName": "COVID19 (PFIZER AGE 12+) PURPLE CAP",
+            "manufacturerName": "Pfizer-BioNtech",
+            "manufacturerDisplayName": "Pfizer-BioNtech"
+        },
+        "vaccineDisplayName": "COVID-19 (Pfizer)"
+    },
+    {
+        "productId": "5fd42921195d89e656c0b028",
+        "drugId": "695156",
+        "manufacturer": "Moderna",
+        "manufacturerDisplayName": "Moderna",
+        "ndc": "80777-0273-10",
+        "vaccineName": "COVID-19",
+        "vaccineCode": "207",
+        "category": "Adult",
+        "boosterEnabled": true,
+        "drugName": "COVID19 VAC (MODERNA) 10DOSE (Dose#1,#2,addl dose only)",
+        "rules": {
+            "series": [
+                {
+                    "daysIn": 0,
+                    "daysOut": 14,
+                    "dose": 1,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 1",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 56,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 2",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Regular",
+                    "daysIn": 28,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 3,
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Additional Dose",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 1,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.25,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-09-07",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.25,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-09-07",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "dvar": {
+            "ICPlusStatus": "inactive",
+            "visPublishDate": "8/31/2022",
+            "drugDisplayName": "COVID19 VAC (MODERNA) 10DOSE (Dose#1,#2,addl dose only)",
+            "manufacturerName": "Moderna",
+            "manufacturerDisplayName": "Moderna"
+        },
+        "vaccineDisplayName": "COVID-19 (Moderna)"
+    },
+    {
+        "productId": "605924b9be1e1d8e25dfc6a9",
+        "drugId": "695563",
+        "manufacturer": "Janssen",
+        "manufacturerDisplayName": "Johnson & Johnson (Janssen)",
+        "ndc": "59676-0580-05",
+        "vaccineName": "COVID-19",
+        "vaccineCode": "207",
+        "category": "Adult",
+        "boosterEnabled": true,
+        "drugName": "COVID19 VACCINE (JANSSEN)MDV",
+        "rules": {
+            "series": [
+                {
+                    "daysIn": 0,
+                    "daysOut": 14,
+                    "dose": 1,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 18
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 1",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 1,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-09-07",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "restriction": {
+                        "startAge": 12
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-09-07",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "dvar": {
+            "ICPlusStatus": "active",
+            "visPublishDate": "1/31/2022",
+            "drugDisplayName": "COVID19 VACCINE (JANSSEN)MDV",
+            "manufacturerName": "Janssen",
+            "manufacturerDisplayName": "Johnson & Johnson (Janssen)"
+        },
+        "vaccineDisplayName": "COVID-19 (J&J)"
+    },
+    {
+        "productId": "6181e5527b6c2fa59ed3f0b1",
+        "drugId": "698353",
+        "manufacturer": "Pfizer-BioNtech",
+        "manufacturerDisplayName": "Pfizer-BioNtech",
+        "ndc": "59267-1055-01",
+        "vaccineName": "COVID-19",
+        "vaccineCode": "207",
+        "category": "Pediatric",
+        "boosterEnabled": true,
+        "drugName": "COVID19 Vaccine (PFIZER) MDV",
+        "rules": {
+            "series": [
+                {
+                    "daysIn": 0,
+                    "daysOut": 14,
+                    "dose": 1,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 5,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 1",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 56,
+                    "daysOut": 35,
+                    "dose": 2,
+                    "daysOutLate": 14,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 5,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 2",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Regular",
+                    "daysIn": 28,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 3,
+                    "restriction": {
+                        "startAge": 5,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Additional Dose",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 1,
+                    "restriction": {
+                        "startAge": 5,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-10-12",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "restriction": {
+                        "startAge": 5,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-10-12",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "dvar": {
+            "ICPlusStatus": "inactive",
+            "manufacturerName": "Pfizer-BioNtech",
+            "manufacturerDisplayName": "Pfizer-BioNtech"
+        },
+        "vaccineDisplayName": "COVID-19 (Pfizer pediatric)"
+    },
+    {
+        "productId": "62049e03ce4666254e3d4b72",
+        "drugId": "698439",
+        "manufacturer": "Pfizer-BioNtech",
+        "manufacturerDisplayName": "Pfizer-BioNtech",
+        "ndc": "59267-0078-01",
+        "vaccineName": "COVID-19",
+        "vaccineCode": "207",
+        "category": "Toddler",
+        "boosterEnabled": true,
+        "drugName": "COVID19 (PFIZER TODDLER AGE 3-4)",
+        "rules": {
+            "series": [
+                {
+                    "daysIn": 0,
+                    "daysOut": 14,
+                    "dose": 1,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 4
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 1",
+                        "startDate": "2022-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 21,
+                    "daysOut": 35,
+                    "dose": 2,
+                    "daysOutLate": 14,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 4
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 2",
+                        "startDate": "2022-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 56,
+                    "daysOut": 70,
+                    "dose": 3,
+                    "daysOutLate": 14,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 4
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 3",
+                        "startDate": "2022-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 1,
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 4
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-11-15",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 4
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-11-15",
+                        "history": []
+                    }
+                }
+            ]
+        },
+        "dvar": {
+            "ICPlusStatus": "inactive",
+            "manufacturerName": "Pfizer-BioNtech",
+            "manufacturerDisplayName": "Pfizer-BioNtech"
+        },
+        "vaccineDisplayName": "COVID-19 (Pfizer toddler)"
+    },
+    {
+        "productId": "62ae5054da6d7f4d9b398057",
+        "drugId": "698220",
+        "manufacturer": "Moderna",
+        "manufacturerDisplayName": "Moderna",
+        "ndc": "80777-0279-05",
+        "vaccineName": "COVID-19",
+        "vaccineCode": "207",
+        "category": "Toddler",
+        "boosterEnabled": true,
+        "drugName": "COVID19 (MODERNA TODDLER AGE 3-4)",
+        "rules": {
+            "series": [
+                {
+                    "daysIn": 0,
+                    "daysOut": 14,
+                    "dose": 1,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 5
+                    },
+                    "unit": "ML",
+                    "volume": 0.25,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 1",
+                        "startDate": "2022-06-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 28,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 5
+                    },
+                    "unit": "ML",
+                    "volume": 0.25,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 2",
+                        "startDate": "2022-06-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 28,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 3,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 5
+                    },
+                    "unit": "ML",
+                    "volume": 0.25,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Additional Dose",
+                        "startDate": "2022-06-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 1,
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 5
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-11-15",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "restriction": {
+                        "startAge": 3,
+                        "endAge": 5
+                    },
+                    "unit": "ML",
+                    "volume": 0.2,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-11-15",
+                        "history": []
+                    }
+                }
+            ]
+        },
+        "dvar": {
+            "ICPlusStatus": "inactive",
+            "manufacturerName": "Moderna",
+            "manufacturerDisplayName": "Moderna"
+        },
+        "vaccineDisplayName": "COVID-19 (Moderna toddler)"
+    },
+    {
+        "productId": "62b6285a866652e2a4ee546e",
+        "drugId": "698219",
+        "manufacturer": "Moderna",
+        "manufacturerDisplayName": "Moderna",
+        "ndc": "80777-0277-05",
+        "vaccineName": "COVID-19",
+        "vaccineCode": "207",
+        "category": "Pediatric",
+        "boosterEnabled": true,
+        "drugName": "COVID19 (MODERNA PEDIATRIC AGE 6-11)",
+        "rules": {
+            "series": [
+                {
+                    "daysIn": 0,
+                    "daysOut": 14,
+                    "dose": 1,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 6,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 1",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 56,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 6,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Primary Series Dose 2",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "daysIn": 28,
+                    "daysOut": 42,
+                    "daysOutLate": 14,
+                    "dose": 3,
+                    "type": "Regular",
+                    "restriction": {
+                        "startAge": 6,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.5,
+                    "attestationPage": false,
+                    "doseDisplayName": {
+                        "value": "Additional Dose",
+                        "startDate": "2019-01-01",
+                        "history": []
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 1,
+                    "restriction": {
+                        "startAge": 6,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.25,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-10-12",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Booster",
+                    "daysIn": 56,
+                    "daysOut": 14,
+                    "daysOutLate": 14,
+                    "dose": 2,
+                    "restriction": {
+                        "startAge": 6,
+                        "endAge": 11
+                    },
+                    "unit": "ML",
+                    "volume": 0.25,
+                    "attestationPage": false,
+                    "crossManufacturerConfig": {
+                        "channel": "Web",
+                        "eligibleManufacturers": [
+                            "Pfizer-BioNtech",
+                            "Moderna"
+                        ],
+                        "active": true
+                    },
+                    "doseDisplayName": {
+                        "value": "Updated Booster",
+                        "startDate": "2022-10-12",
+                        "history": [
+                            {
+                                "value": "Booster",
+                                "startDate": "2020-01-01"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "dvar": {
+            "ICPlusStatus": "inactive",
+            "manufacturerName": "Moderna",
+            "manufacturerDisplayName": "Moderna"
+        },
+        "vaccineDisplayName": "COVID-19 (Moderna pediatric)"
+    }
+]
