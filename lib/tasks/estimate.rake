@@ -1,3 +1,4 @@
+$stdout.sync = true
 require 'csv'
 require "uri"
 require "json"
@@ -189,6 +190,8 @@ namespace :estimate do
       cache.data_type = data_type
       cache.save!
     end
+  rescue StandardError => e
+    puts("Error")
   end
 
   def zip_codes
@@ -239,6 +242,7 @@ namespace :estimate do
         }
       }
       cached(["walgreens", "locations", zip_code, date], data_type: :walgreens_locations) do
+        print("Fetching walgreens locations for #{zip_code} on #{date}...")
         response = HTTParty.post(
           "https://www.walgreens.com/hcschedulersvc/svc/v8/immunizationLocations/timeslots",
           body: body.to_json,
@@ -248,7 +252,12 @@ namespace :estimate do
             "Accept": 'application/json',
           },
         )
-        body = JSON.parse(response.body)
+        if response.success?
+          print("success\n")
+          JSON.parse(response.body)
+        else
+          raise StandardError.new("Failed")
+        end
       end
     end
   end
