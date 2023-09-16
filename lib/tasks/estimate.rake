@@ -208,9 +208,9 @@ namespace :estimate do
     end
   end
 
-  def fetch_locations_for_walgreens(address, state)
+  def fetch_locations_for_walgreens(address)
     zip_code, state_abbr = address
-    loc = Geocoder.search("#{zip_code} #{state}").first
+    loc = Geocoder.search("#{zip_code} #{state_abbr}").first
     latitude = loc.latitude
     longitude = loc.longitude
     dates = [Date.today, Date.today + 7.days]
