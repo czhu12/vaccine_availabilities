@@ -222,28 +222,27 @@ namespace :estimate do
         },
         "state": state_abbr,
         "vaccine": [
-            {
-                "code": "207",
-                "productId": ""
-            }
+          {
+            "code": "207",
+            "productId": ""
+          }
         ],
         "appointmentAvailability": {
-            "startDateTime": date.to_s
+          "startDateTime": date.to_s
         },
         "filter": {
-            "radius": 25,
-            "size": 25,
-            "pageNo": 1,
-            "includeUnavailableStores": false
+          "radius": 25,
+          "size": 25,
+          "pageNo": 1,
+          "includeUnavailableStores": false
         },
         "serviceId": "99",
         "restriction": {
-            "dob": "1993-12-03"
+          "dob": "1993-12-03"
         }
       }
       cached(["walgreens", "locations", zip_code, date], data_type: :walgreens_locations) do
         print("Fetching walgreens locations for #{zip_code} on #{date}...")
-        debugger
         response = HTTParty.post(
           "https://www.walgreens.com/hcschedulersvc/svc/v8/immunizationLocations/timeslots",
           body: body.to_json,
@@ -251,6 +250,7 @@ namespace :estimate do
             "X-XSRF-TOKEN": XSRF_TOKEN,
             "Cookie": COOKIE,
             "Accept": 'application/json',
+            "Content-Type": 'application/json',
           },
         )
         if response.success?
