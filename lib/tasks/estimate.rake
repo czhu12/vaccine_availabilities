@@ -158,6 +158,12 @@ namespace :estimate do
 
     request.body = JSON.dump(cvs_base_query(ndc, zip_code, date))
     response = https.request(request)
+    if response.kind_of? Net::HTTPSuccess 
+      puts("[success]") 
+    else
+      puts '[error]'
+      raise StandardError.new("Failed")
+    end
     response.read_body
   end
 
@@ -167,11 +173,10 @@ namespace :estimate do
     CVS_NDC_DATA.each do |data|
       data[:ndcInfo].each do |ndc_info|
         ndc = ndc_info[:ndc] 
-        print("Fetching CVS locations for #{zip_code} on #{date}")
-        cached(["cvs", "locations", zip_code, date, ndc], data_type: :cvs_locations) do
+        print("Fetching CVS locations for #{zip_code} on #{date.to_s}")
+        cached(["cvs", "locations", zip_code, date.to_s, ndc], data_type: :cvs_locations) do
           JSON.parse(cvs_query(ndc, zip_code, date))
         end
-        puts("[success]")
       end
     end
   end
@@ -179,7 +184,7 @@ namespace :estimate do
 
   def fetch_locations_for_address(address, retailer:)
     if retailer == :cvs
-      fetch_locations_for_cvs(address, Date.today.to_s)
+      fetch_locations_for_cvs(address, Date.today)
     elsif retailer == :walgreens
       fetch_locations_for_walgreens(address)
     end
