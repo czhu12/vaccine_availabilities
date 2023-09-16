@@ -191,7 +191,6 @@ namespace :estimate do
       cache.save!
     end
   rescue StandardError => e
-    puts("Error")
   end
 
   def zip_codes
@@ -243,6 +242,7 @@ namespace :estimate do
       }
       cached(["walgreens", "locations", zip_code, date], data_type: :walgreens_locations) do
         print("Fetching walgreens locations for #{zip_code} on #{date}...")
+        debugger
         response = HTTParty.post(
           "https://www.walgreens.com/hcschedulersvc/svc/v8/immunizationLocations/timeslots",
           body: body.to_json,
@@ -253,9 +253,10 @@ namespace :estimate do
           },
         )
         if response.success?
-          print("success\n")
+          puts("success")
           JSON.parse(response.body)
         else
+          puts("Error")
           raise StandardError.new("Failed")
         end
       end
