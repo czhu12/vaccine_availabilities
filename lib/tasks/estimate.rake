@@ -10,12 +10,12 @@ namespace :estimate do
   def fetch_locations_for_address(address, retailer:)
     if retailer == :cvs
     elsif retailer == :walgreens
-      
+      fetch_locations_for_walgreens(address)
     end
   end
 
   def cached(cache_keys, data_type:)
-    Cache.where(key: cache_keys.join("-")).first_or_create do |cache|
+    Cache.where(key: cache_keys.join("--")).first_or_create do |cache|
       data = yield
       cache.data = JSON.dump(data)
       cache.data_type = data_type
@@ -31,54 +31,57 @@ namespace :estimate do
 
   task vaccines: :environment do
     zip_codes do |zip_code, state_abbr, _|
-      #[:cvs, :walgreens].each do |retailer|
-      #  locations = cached([zip_code, retailer], data_type: :search) do
-      #    fetch_locations_for_address(zip_code, retailer:)
-      #  end
-      #end
+      [:cvs, :walgreens].each do |retailer|
+        fetch_locations_for_address([zip_code, state_abbr], retailer:)
+      end
     end
   end
 
-  def fetch_locations_for_walgreens(zip_code, state)
+  def fetch_locations_for_walgreens(address, state)
+    zip_code, state_abbr = address
     loc = Geocoder.search("#{zip_code} #{state}").first
     latitude = loc.latitude
     longitude = loc.longitude
-    body = {
-      "position": {
-          "latitude": latitude,
-          "longitude": longitude
-      },
-      "state": state,
-      "vaccine": [
-          {
-              "code": "207",
-              "productId": ""
-          }
-      ],
-      "appointmentAvailability": {
-          "startDateTime": Date.today.to_s
-      },
-      "filter": {
-          "radius": 25,
-          "size": 25,
-          "pageNo": 1,
-          "includeUnavailableStores": false
-      },
-      "serviceId": "99",
-      "restriction": {
-          "dob": "1993-12-03"
-      }
-    }
-    cached(["walgreens", "locations", Digest::MD5.hexdigest(body)], data_type: :walgreens_locations) do
-      response = HTTParty.post(
-        "https://www.walgreens.com/hcschedulersvc/svc/v8/immunizationLocations/timeslots",
-        headers: {
-          "X-XSRF-TOKEN": XSRF_TOKEN,
-          "Cookie": COOKIE,
-          "Accept": 'application/json',
+    dates = [Date.today, Date.today + 7.days]
+    dates.each do |date|
+      body = {
+        "position": {
+            "latitude": latitude,
+            "longitude": longitude
+        },
+        "state": state_abbr,
+        "vaccine": [
+            {
+                "code": "207",
+                "productId": ""
+            }
+        ],
+        "appointmentAvailability": {
+            "startDateTime": date.to_s
+        },
+        "filter": {
+            "radius": 25,
+            "size": 25,
+            "pageNo": 1,
+            "includeUnavailableStores": false
+        },
+        "serviceId": "99",
+        "restriction": {
+            "dob": "1993-12-03"
         }
-      )
-      body = JSON.parse(response.body)
+      }
+      cached(["walgreens", "locations", zip_code, date], data_type: :walgreens_locations) do
+        response = HTTParty.post(
+          "https://www.walgreens.com/hcschedulersvc/svc/v8/immunizationLocations/timeslots",
+          body: body.to_json,
+          headers: {
+            "X-XSRF-TOKEN": XSRF_TOKEN,
+            "Cookie": COOKIE,
+            "Accept": 'application/json',
+          },
+        )
+        body = JSON.parse(response.body)
+      end
     end
   end
 
