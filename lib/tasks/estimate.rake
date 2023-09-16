@@ -203,14 +203,15 @@ namespace :estimate do
   end
 
   def zip_codes
-    ZIP_CODE_CSV.map do |row|
-      yield row['zipcode'], row['state_abbr'], row
+    ZIP_CODE_CSV.each_with_index do |row, index|
+      yield row['zipcode'], row['state_abbr'], row, index
     end
   end
 
   task vaccines: :environment do
-    zip_codes do |zip_code, state_abbr, _|
+    zip_codes do |zip_code, state_abbr, _, index|
       [:cvs, :walgreens].each do |retailer|
+        print("(#{index} / #{ZIP_CODE_CSV.size}) ")
         fetch_locations_for_address([zip_code, state_abbr], retailer: retailer)
       end
     end
