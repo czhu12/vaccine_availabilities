@@ -161,16 +161,17 @@ namespace :estimate do
     response.read_body
   end
 
-  def fetch_locations_for_cvs(zip_code, date)
+  def fetch_locations_for_cvs(address, date)
+    zip_code, state = address
     responses = {}
     CVS_NDC_DATA.each do |data|
       data[:ndcInfo].each do |ndc_info|
         ndc = ndc_info[:ndc] 
-        print("Fetching walgreens locations for #{zip_code} on #{date}...")
+        print("Fetching CVS locations for #{zip_code} on #{date}")
         cached(["cvs", "locations", zip_code, date, ndc], data_type: :cvs_locations) do
           JSON.parse(cvs_query(ndc, zip_code, date))
         end
-        print("success\n")
+        puts("[success]")
       end
     end
   end
@@ -185,12 +186,17 @@ namespace :estimate do
   end
 
   def cached(cache_keys, data_type:)
-    Cache.where(key: cache_keys.join("--")).first_or_create do |cache|
+    cache_hit = true
+    result = Cache.where(key: cache_keys.join("--")).first_or_create do |cache|
+      cache_hit = false
       data = yield
+      print("...")
       cache.value = JSON.dump(data)
       cache.data_type = data_type
       cache.save!
     end
+    sleep(0.5) unless cache_hit
+    result
   rescue StandardError => e
   end
 
@@ -242,7 +248,7 @@ namespace :estimate do
         }
       }
       cached(["walgreens", "locations", zip_code, date], data_type: :walgreens_locations) do
-        print("Fetching walgreens locations for #{zip_code} on #{date}...")
+        print("Fetching walgreens locations for #{zip_code} on #{date}")
         response = HTTParty.post(
           "https://www.walgreens.com/hcschedulersvc/svc/v8/immunizationLocations/timeslots",
           body: body.to_json,
@@ -254,10 +260,10 @@ namespace :estimate do
           },
         )
         if response.success?
-          puts("success")
+          puts("[success]")
           JSON.parse(response.body)
         else
-          puts("Error")
+          puts("[error]")
           raise StandardError.new("Failed")
         end
       end
