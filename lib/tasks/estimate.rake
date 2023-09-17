@@ -8,6 +8,9 @@ ZIP_CODE_CSV = CSV.parse(
   File.read(File.join('lib', 'assets', 'zip_codes.csv')),
   headers: true 
 )
+ZIP_CODE_TO_STATE = ZIP_CODE_CSV.each_with_object({}) do |row, obj|
+  obj[row['zipcode']] = row['state_abbr']
+end
 
 ZIP_CODES_TO_USE_CSV = CSV.parse(
   File.read(File.join('lib', 'assets', 'zip_codes_to_use.csv')),
@@ -201,7 +204,7 @@ namespace :estimate do
       cache.data_type = data_type
       cache.save!
     end
-    sleep(0.5) unless cache_hit
+    sleep(0.1) unless cache_hit
     [result, true]
   rescue StandardError => e
     [nil, false]
@@ -282,6 +285,43 @@ namespace :estimate do
     end
   end
 
-  def fetch_availabilities_for_location_id()
+  task count: :environment do
+    by_zip_code_by_type = calculate_walgreens
+    puts(by_zip_code_by_type)
+  end
+
+  def calculate_walgreens
+    by_zip_code_by_type = {}
+    already_seen_location = {}
+    Cache.walgreens_locations.each do |cache|
+      JSON.load(cache.value)['locations'].each do |location|
+        next if already_seen_location[location['storenumber']]
+        already_seen_location[location['storenumber']] = true
+
+        zip_code = location['address']['zip']
+        by_zip_code_by_type[zip_code] ||= {}
+
+        location['appointmentAvailability'].each do |availability|
+          availability['manufacturer'].each do |manufacturer|
+            by_zip_code_by_type[zip_code][manufacturer['name']] ||= 0
+            by_zip_code_by_type[zip_code][manufacturer['name']] += availability['numberOfSlotsAvailable']
+          end
+        end
+      end
+    end
+
+    rows_data = []
+
+    by_zip_code_by_type.each do |zip_code, types|
+      types.each do |type, count|
+        rows_data << {'state': ZIP_CODE_TO_STATE[zip_code], 'zip_code': zip_code, 'type': type, 'count': count, 'retailer': 'walgreens'}
+      end
+    end
+    CSV.open("data.csv", "wb") do |csv|
+      csv << rows_data.first.keys
+      rows_data.each do |hash|
+        csv << hash.values
+      end
+    end
   end
 end

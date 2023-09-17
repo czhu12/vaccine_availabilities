@@ -117,11 +117,15 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    memoist (0.16.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
     multi_xml (0.6.0)
+    my_zipcode_gem (0.3.0)
+      memoist (~> 0.16.0)
+      rails (>= 3.0.0)
     net-imap (0.3.7)
       date
       net-protocol
@@ -238,6 +242,7 @@ DEPENDENCIES
   httparty (~> 0.21.0)
   importmap-rails
   jbuilder
+  my_zipcode_gem
   pry
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
