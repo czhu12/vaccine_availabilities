@@ -287,8 +287,37 @@ namespace :estimate do
 
   task count: :environment do
     by_zip_code_by_type = calculate_walgreens
+    calculate_cvs
     puts(by_zip_code_by_type)
   end
+
+  def calculate_cvs
+    output_file = Rails.root.join('lib', 'assets', "calculated_cvs-#{Date.today.to_s}.csv")
+
+    found_stores = []
+    by_zip_code = {}
+    Cache.cvs_locations.each do |cache|
+      ndc = cache.key.split("--").last
+      json = JSON.parse(cache.value)
+      next if json.dig('responseMetaData', 'statusCode') == '1010'
+      json.dig('responsePayloadData', 'locations').each do |location|
+        store_number = location['StoreNumber']
+        uid = "#{store_number}-#{ndc}"
+        next if found_stores.include?(uid)
+        found_stores << uid 
+        by_zip_code[location['addressZipCode']] ||= {count: 0, ndc: ndc} 
+        by_zip_code[location['addressZipCode']][:count] = by_zip_code[location['addressZipCode']][:count] + (14 * 10) # 14 days plus 10 slots
+      end
+    end
+
+    CSV.open(output_file, 'w', write_headers: true, headers: %w[state zipcode count type retailer]) do |writer|
+      by_zip_code.each do |zip_code, v|
+        writer << [ZIP_CODE_TO_STATE[zip_code], zip_code, v[:count], v[:ndc], 'cvs']
+        print('.')
+      end
+    end
+  end
+  
 
   def calculate_walgreens
     by_zip_code_by_type = {}
