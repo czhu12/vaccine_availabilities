@@ -9,6 +9,11 @@ ZIP_CODE_CSV = CSV.parse(
   headers: true 
 )
 
+ZIP_CODES_TO_USE_CSV = CSV.parse(
+  File.read(File.join('lib', 'assets', 'zip_codes_to_use.csv')),
+  headers: true
+)
+
 CVS_NDC_DATA = [
   {
     "immunizationCode": "CVD",
@@ -203,7 +208,11 @@ namespace :estimate do
   end
 
   def zip_codes
+    popular_zip_codes = ZIP_CODES_TO_USE_CSV.map do |row|
+      row['zipcode'].rjust(5, '0')
+    end
     ZIP_CODE_CSV.each_with_index do |row, index|
+      next unless popular_zip_codes.include?(row['zipcode'])
       yield row['zipcode'], row['state_abbr'], row, index
     end
   end
