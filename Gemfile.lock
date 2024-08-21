@@ -117,15 +117,11 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
-    memoist (0.16.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
     multi_xml (0.6.0)
-    my_zipcode_gem (0.3.0)
-      memoist (~> 0.16.0)
-      rails (>= 3.0.0)
     net-imap (0.3.7)
       date
       net-protocol
@@ -139,6 +135,8 @@ GEM
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -202,6 +200,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.6.6-arm64-darwin)
     sqlite3 (1.6.6-x86_64-darwin)
+    sqlite3 (1.6.6-x86_64-linux)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
@@ -233,6 +232,7 @@ GEM
 PLATFORMS
   arm64-darwin-20
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -242,7 +242,6 @@ DEPENDENCIES
   httparty (~> 0.21.0)
   importmap-rails
   jbuilder
-  my_zipcode_gem
   pry
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
